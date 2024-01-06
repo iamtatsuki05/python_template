@@ -1,23 +1,28 @@
 version: "3.2"
 services:
   python-cpu:
+    tty: true
+    stdin_open: true
+    user: root
+    working_dir: /app
     build:
       context: .
-      dockerfile: Dockerfile
-    user: root
+      dockerfile: docker/cpu/Dockerfile
+      target: dev
+      args:
+        progress: plain
     volumes:
       - type: bind
-        source: ../../
-        target: /main
-    working_dir: /main
+        source: ./
+        target: /app
     ports:
       - "8888:8888"
     command:
-      jupyter lab
+      poetry run jupyter lab
         --ip=0.0.0.0
         --allow-root
         --NotebookApp.token=''
         --port=8888
     environment:
-        PYTHONPATH: "/main/src"
+        PYTHONPATH: "/app/src"
         PYTHONUNBUFFERED: 1
