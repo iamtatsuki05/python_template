@@ -9,6 +9,8 @@ services:
       context: .
       dockerfile: docker/cpu/Dockerfile
       target: dev
+      # secrets:
+      #   - github_token
       args:
         progress: plain
     volumes:
@@ -26,3 +28,6 @@ services:
     environment:
         PYTHONPATH: "/app/src"
         PYTHONUNBUFFERED: 1
+# secrets:
+#   github_token:
+#     file: ${HOME}/.git-credentials
