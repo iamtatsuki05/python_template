@@ -36,7 +36,7 @@
 │   └── cpu
 ├── docs
 ├── env.sample
-├── notebook
+├── notebooks
 ├── poetry.lock
 ├── pyproject.toml
 ├── scripts
