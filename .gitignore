@@ -1,3 +1,7 @@
+# original
+data/*
+!*.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -135,7 +139,3 @@ dmypy.json
 ._*
 .Spotlight-V100
 .Trashes
-
-# original
-data/*
-!*/**/.gitkeep
