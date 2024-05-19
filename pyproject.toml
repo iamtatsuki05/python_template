@@ -59,7 +59,7 @@ testpaths = "tests/"
 
 [tool.mypy]
 python_version=3.10
-files = "src/meal_shield"
+files = "src/project"
 ignore_missing_imports = true
 disallow_untyped_defs = true
 no_implicit_optional = true
