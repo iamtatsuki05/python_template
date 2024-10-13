@@ -32,4 +32,4 @@ jobs:
           docker compose build --progress=plain
           docker compose up -d
       - name: Test
-        run: docker compose exec python-cpu poetry run tox
+        run: docker compose exec python-cpu uv run tox
