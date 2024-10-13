@@ -1,4 +1,4 @@
-name: test-poetry
+name: test-uv
 
 on:
   pull_request:
