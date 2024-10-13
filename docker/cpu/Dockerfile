@@ -42,22 +42,19 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
   && pip3 --no-cache-dir install --upgrade pip
 
 ## install Poetry
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH $PATH:/root/.local/bin
-RUN poetry config virtualenvs.create true \
-  && poetry config virtualenvs.in-project false
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 WORKDIR ${WORKDIR}
 
 # install python packages
-COPY poetry.lock pyproject.toml ./
+COPY uv.lock pyproject.toml ./
 COPY src ./src
-RUN poetry install --no-dev
+RUN uv sync --frozen --no-cache
 
 FROM base AS dev
 WORKDIR ${WORKDIR}
 
 # install python packages
-COPY poetry.lock pyproject.toml ./
+COPY uv.lock pyproject.toml ./
 COPY src ./src
-RUN poetry install
+RUN uv sync --frozen --no-cache
